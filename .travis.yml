@@ -63,7 +63,8 @@ before_install:
   - tar xvfz influxdb-1.5.3_linux_i386.tar.gz
   - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influxd &
   - sleep 10
-  
+  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influx -execute 'CREATE DATABASE test_db'  
+
   - if ! [ -f $HOME/libfabric/.cached ]; then wget https://github.com/ofiwg/libfabric/releases/download/v1.4.0/libfabric-1.4.0.tar.gz -O $LIBFABRIC_ARCHIVE_PATH; fi
   - if ! [ -f $HOME/libfabric/.cached ]; then tar xzf $LIBFABRIC_ARCHIVE_PATH -C $HOME/libfabric --strip-components 1; fi
   - if ! [ -f $HOME/libfabric/.cached ]; then cd $HOME/libfabric && ./configure && make && cd $WORK_DIR; fi
@@ -77,7 +78,6 @@ before_install:
   - cd $WORK_DIR
 
 before_script:
-  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influx -execute 'CREATE DATABASE test_db'
   - if [ "$CXX" = "clang++" ]; then export CXX="clang++" CC="clang"; fi
   - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8" GCOV="gcov-4.8"; fi
   - contrib/merge-dependencies
