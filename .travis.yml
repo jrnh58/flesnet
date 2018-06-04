@@ -60,8 +60,8 @@ before_install:
 
   - wget https://dl.influxdata.com/influxdb/releases/influxdb-1.5.3_linux_i386.tar.gz
   - tar xvfz influxdb-1.5.3_linux_i386.tar.gz
-  - /etc/init.d/influxdb start
-  - /etc/init.d/influxdb status
+  - ./influxdb-1.5.3-1/etc/influxdb  start
+  - ./influxdb-1.5.3-1/etc/influxdb status
 
   - if ! [ -f $HOME/libfabric/.cached ]; then wget https://github.com/ofiwg/libfabric/releases/download/v1.4.0/libfabric-1.4.0.tar.gz -O $LIBFABRIC_ARCHIVE_PATH; fi
   - if ! [ -f $HOME/libfabric/.cached ]; then tar xzf $LIBFABRIC_ARCHIVE_PATH -C $HOME/libfabric --strip-components 1; fi
