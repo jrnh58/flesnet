@@ -89,7 +89,6 @@ before_script:
 script:
   - cmake ..
   - make
-  - ./test/test_influxdb
   - make CTEST_OUTPUT_ON_FAILURE=1 test
 
 after_success:
