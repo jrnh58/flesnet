@@ -4,11 +4,6 @@ add_library(influxdb influxdb.hpp influxdb.cpp)
 
 target_include_directories(influxdb PUBLIC .)
 
-target_compile_definitions(influxdb
-  PUBLIC BOOST_LOG_DYN_LINK
-  PUBLIC BOOST_LOG_USE_NATIVE_SYSLOG
-)
-
 target_include_directories(influxdb SYSTEM PUBLIC
   ${Boost_INCLUDE_DIRS}
   ${CPPREST_INCLUDE_DIR}
