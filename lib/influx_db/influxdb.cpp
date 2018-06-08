@@ -76,7 +76,7 @@ std::string influxdb::db::requestBuilder(
   std::stringstream requestString;
   requestString << measurementName << "," << getMapString(tagMap)
                 << getMapString(fieldMap) << " " << timestamp;
-  L_(trace) << requestString.str();
+  L_(info) << requestString.str();
   return requestString.str();
 }
 
@@ -108,7 +108,7 @@ pplx::task<void> influxdb::db::sendAsync(measurement const& m,
   requestTask =
       client.request(requestFrom(uriDB, requestString, username, password))
           .then([=](web::http::http_response response) {
-            L_(trace) << "Received response status code:"
+            L_(info) << "Received response status code:"
                       << response.status_code();
             if (!(response.status_code() == web::http::status_codes::OK ||
                   response.status_code() ==
