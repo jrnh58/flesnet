@@ -16,7 +16,7 @@ int main() {
   m.addField("doub1", doub1);
   m.addField("int1", int1);
 
-  db.sendSync(m, "measurement_test", db.defaultTimestamp());
+  db.sendAsync(m, "measurement_test", db.defaultTimestamp());
 
   return 0;
 }
