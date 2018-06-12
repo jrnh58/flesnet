@@ -45,6 +45,7 @@ influxdb::db::db(std::string const& address_,
   builder.append("/write");
   builder.append_query(("db"), databaseName_);
   uriDB = builder.to_uri();
+  L_(info) << "constructor called";
 }
 
 std::string influxdb::db::urlBuilder(std::string const& name_, uint32_t port_) {
