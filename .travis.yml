@@ -50,7 +50,7 @@ cache:
   directories:
   - $HOME/libfabric
   - $HOME/cpprestsdk
-#  - $HOME/influxdb
+  - $HOME/influxdb
 
 before_install:
   - WORK_DIR=$(pwd)
