@@ -59,14 +59,14 @@ before_install:
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
   - export PATH=$HOME/clang+llvm/bin:$PATH
 
- # - cd $HOME/influxdb && wget https://dl.influxdata.com/influxdb/releases/influxdb-1.5.3_linux_i386.tar.gz
- # - tar xvfz influxdb-1.5.3_linux_i386.tar.gz
- # - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influxd &
- # - sleep 10
- # - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/
- # - ./influx -execute "CREATE DATABASE test_db"  
- # - ./influx -execute "CREATE USER admin WITH PASSWORD '$admin'"
- # - ./influx -execute "GRANT ALL TO admin"
+  - cd $HOME/influxdb && wget https://dl.influxdata.com/influxdb/releases/influxdb-1.5.3_linux_i386.tar.gz
+  - tar xvfz influxdb-1.5.3_linux_i386.tar.gz
+  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influxd > output.txt 2>&1 &
+#  - sleep 10
+#  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/
+#  - ./influx -execute "CREATE DATABASE test_db"  
+#  - ./influx -execute "CREATE USER admin WITH PASSWORD '$admin'"
+#  - ./influx -execute "GRANT ALL TO admin"
 
   - if ! [ -f $HOME/libfabric/.cached ]; then wget https://github.com/ofiwg/libfabric/releases/download/v1.4.0/libfabric-1.4.0.tar.gz -O $LIBFABRIC_ARCHIVE_PATH; fi
   - if ! [ -f $HOME/libfabric/.cached ]; then tar xzf $LIBFABRIC_ARCHIVE_PATH -C $HOME/libfabric --strip-components 1; fi
