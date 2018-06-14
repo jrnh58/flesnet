@@ -30,6 +30,7 @@ requestFrom(web::http::uri const& uriDB,
   }
 
   request.set_body(lines);
+  L_(info) << request.to_string();
   return request;
 }
 }
@@ -104,7 +105,6 @@ pplx::task<void> influxdb::db::sendAsync(measurement const& m,
                                          size_t const& timestamp) {
   std::string requestString = requestBuilder(measurementName, m.getTagMap(),
                                              m.getFieldMap(), timestamp);
-  L_(info) << requestString;
   requestTask =
       client.request(requestFrom(uriDB, requestString, username, password))
           .then([=](web::http::http_response response) {
