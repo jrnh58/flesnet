@@ -30,6 +30,7 @@ requestFrom(web::http::uri const& uriDB,
   }
 
   request.set_body(lines);
+
   L_(info) << request.to_string();
   return request;
 }
