@@ -37,6 +37,7 @@ addons:
     - librdmacm-dev
     - libssl-dev
     - libzmq3-dev
+    - libwww-perl
     - valgrind
     - zlib1g-dev
 
