@@ -9,6 +9,10 @@ target_include_directories(influxdb SYSTEM PUBLIC
   ${CPPREST_INCLUDE_DIR}
 )
 
+target_compile_definitions(logging
+  PUBLIC BOOST_ALL_DYN_LINK
+)
+
 target_link_libraries(influxdb
   PUBLIC logging
   PUBLIC ${CPPREST_LIBRARY}
