@@ -10,7 +10,6 @@ target_include_directories(influxdb SYSTEM PUBLIC
 )
 
 target_link_libraries(influxdb
-  PUBLIC ${Boost_LIBRARIES}
   PUBLIC logging
   PUBLIC ${CPPREST_LIBRARY}
   PUBLIC ${OPENSSL_LIBRARIES}
