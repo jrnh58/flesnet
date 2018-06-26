@@ -34,6 +34,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 endif()
 target_link_libraries(test_logging logging ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 #target_link_libraries(test_influxdb influxdb ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(test_influxdb influxdb)
 
 add_custom_command(TARGET test_Timeslice POST_BUILD
                    COMMAND ${CMAKE_COMMAND} -E copy
