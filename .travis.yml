@@ -94,7 +94,7 @@ script:
   - make CTEST_OUTPUT_ON_FAILURE=1 test
 
 after_script:
-  - cd $WORK_DIR/build/test && ./test_influxdb
+#  - cd $WORK_DIR/build/test && ./test_influxdb
 
 after_success:
   - if [ "$CXX" = "g++-4.8" ]; then cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug .. && make -j4 && make coveralls; fi
