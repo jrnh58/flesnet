@@ -18,6 +18,7 @@ addons:
     - gcc-4.8
     - g++-4.8
     - git
+    - influxdb
     - libboost-filesystem1.55-dev
     - libboost-log1.55-dev
     - libboost-program-options1.55-dev
@@ -50,14 +51,14 @@ cache:
   directories:
   - $HOME/libfabric
   - $HOME/cpprestsdk
-  - $HOME/influxdb
+#  - $HOME/influxdb
 
 before_install:
   - WORK_DIR=$(pwd)
 
-  - cd $HOME/influxdb && wget https://dl.influxdata.com/influxdb/releases/influxdb-1.5.3_linux_i386.tar.gz
-  - tar xvfz influxdb-1.5.3_linux_i386.tar.gz
-  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influxd > output.txt 2>&1 &
+#  - cd $HOME/influxdb && wget https://dl.influxdata.com/influxdb/releases/influxdb-1.5.3_linux_i386.tar.gz
+#  - tar xvfz influxdb-1.5.3_linux_i386.tar.gz
+#  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influxd > output.txt 2>&1 &
 #  - sleep 10
 #  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/
 #  - ./influx -execute "CREATE DATABASE test_db"  
