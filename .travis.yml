@@ -50,9 +50,20 @@ cache:
   directories:
   - $HOME/libfabric
   - $HOME/cpprestsdk
+  - $HOME/influxdb
 
 before_install:
   - WORK_DIR=$(pwd)
+
+  - cd $HOME/influxdb && wget https://dl.influxdata.com/influxdb/releases/influxdb-1.5.3_linux_i386.tar.gz
+  - tar xvfz influxdb-1.5.3_linux_i386.tar.gz
+  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/ && ./influxd > output.txt 2>&1 &
+#  - sleep 10
+#  - cd $HOME/influxdb/influxdb-1.5.3-1/usr/bin/
+#  - ./influx -execute "CREATE DATABASE test_db"  
+#  - ./influx -execute "CREATE USER admin WITH PASSWORD '$admin'"
+#  - ./influx -execute "GRANT ALL TO admin"
+
   - wget http://llvm.org/releases/$LLVM_VERSION/clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz -O $LLVM_ARCHIVE_PATH
   - mkdir $HOME/clang+llvm
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
