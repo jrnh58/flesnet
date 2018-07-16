@@ -59,6 +59,8 @@ add_test(NAME test_MicrosliceReceiver COMMAND test_MicrosliceReceiver)
 add_test(NAME test_logging COMMAND test_logging)
 add_test(NAME test_influxdb COMMAND test_influxdb)
 
+set_property(TEST test_influxdb PROPERTY SKIP_RETURN_CODE "1")
+
 find_program(BASH_PROGRAM bash)
 if(BASH_PROGRAM)
   add_test(NAME test_mstool

@@ -1,5 +1,5 @@
 #include "influxdb.hpp"
-#include "log.hpp"
+#include <iostream>
 
 //###################################################################
 
@@ -17,7 +17,11 @@ int main() {
   m.addField("doub1", doub1);
   m.addField("int1", int1);
 
-  db.sendSync(m, "measurement_test", db.defaultTimestamp());
-
+  try {
+    db.sendSync(m, "measurement_test", db.defaultTimestamp());
+  } catch (web::http::http_exception& e) {
+    std::cerr << e.what() << std::endl;
+    return 1;
+  }
   return 0;
 }
