@@ -57,12 +57,17 @@ add_test(NAME test_RingBuffer COMMAND test_RingBuffer)
 add_test(NAME test_Filter COMMAND test_Filter)
 add_test(NAME test_MicrosliceReceiver COMMAND test_MicrosliceReceiver)
 add_test(NAME test_logging COMMAND test_logging)
-add_test(NAME test_influxdb COMMAND test_influxdb)
+#add_test(NAME test_influxdb COMMAND test_influxdb)
 
-set_property(TEST test_influxdb PROPERTY SKIP_RETURN_CODE "1")
+#set_property(TEST test_influxdb PROPERTY SKIP_RETURN_CODE "1")
 
 find_program(BASH_PROGRAM bash)
 if(BASH_PROGRAM)
+  execute_process(COMMAND ${BASH_PROGRAM} ${CMAKE_CURRENT_SOURCE_DIR}/test_influxdb_helper.sh
+		  RESULT_VARIABLE NO_INFLUX)
+  if (NOT NO_INFLUX)
+    add_test(NAME test_influxdb COMMAND test_influxdb)
+  endif()
   add_test(NAME test_mstool
            COMMAND ${BASH_PROGRAM} ${CMAKE_CURRENT_SOURCE_DIR}/test_mstool.sh
            WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
